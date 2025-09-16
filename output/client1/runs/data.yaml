@@ -1,0 +1,5 @@
+names:
+- object
+nc: 1
+train: C:/fed-learning2-belal-kaitlyn/output/client1/train
+val: C:/fed-learning2-belal-kaitlyn/output/client1/val

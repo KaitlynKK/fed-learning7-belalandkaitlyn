@@ -1,0 +1,4 @@
+names:
+- train
+train: C:/fed-learning2-belal-kaitlyn/frames/video_2
+val: C:/fed-learning2-belal-kaitlyn/frames/video_2

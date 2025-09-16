@@ -1,0 +1,5 @@
+names:
+- object
+nc: 1
+train: C:/fed-learning2-belal-kaitlyn/frames/video_1/train
+val: C:/fed-learning2-belal-kaitlyn/frames/video_1/val
