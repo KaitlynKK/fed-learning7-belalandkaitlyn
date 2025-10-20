@@ -1,10 +1,4 @@
-# server_yolo.py — Federated YOLOv8 Server with Evaluation Support
-# Author: Belal Nur & Kaitlyn
-# Updated: 2025-10
-# Description:
-# - Runs Flower federated rounds using YOLOv8 clients
-# - Aggregates weights, saves global model, and performs evaluation on test videos
-# - Supports --test_only mode for running post-training evaluation only
+# server_yolo.py — Federated YOLOv8 Server with Evaluation 
 
 import os
 import argparse
@@ -17,9 +11,9 @@ from flwr.common import parameters_to_ndarrays
 from ultralytics import YOLO
 import yaml
 
-# ============================================================
+
 # FEDERATED STRATEGY
-# ============================================================
+
 
 class FedAvgWithSave(fl.server.strategy.FedAvg):
     """Flower strategy with saved final parameters after last round."""
@@ -34,9 +28,7 @@ class FedAvgWithSave(fl.server.strategy.FedAvg):
         return aggregated, metrics
 
 
-# ============================================================
 # SAVE & EVALUATION HELPERS
-# ============================================================
 
 def save_final_model(params, base_ckpt="model/my_model.pt", out_path="static/output/final_model.pt"):
     """Convert Flower aggregated params back into a YOLO model checkpoint."""
@@ -78,9 +70,9 @@ def make_eval_checkpoint(src_path, dst_path, fuse=True):
     return dst_path
 
 
-# ============================================================
+
 # TESTING UTILITIES
-# ============================================================
+
 
 VIDEO_EXTS = [".mp4", ".mov", ".avi", ".mkv"]
 
@@ -161,9 +153,9 @@ def test_final_model(model_path="static/output/final_model_eval.pt",
     return summary_path
 
 
-# ============================================================
+
 # MAIN EXECUTION
-# ============================================================
+
 
 def parse_args():
     ap = argparse.ArgumentParser(description="Federated YOLOv8 Server with Test Support")

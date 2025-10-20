@@ -13,9 +13,8 @@ import yaml
 from ultralytics import YOLO
 
 
-# -----------------------------
+
 # Windows-safe copy helper
-# -----------------------------
 def same_file(src: Path, dst: Path) -> bool:
     if not dst.exists():
         return False
@@ -54,9 +53,7 @@ def safe_copy2(src: Path, dst: Path, retries: int = 10, delay: float = 0.2) -> N
     raise last_err if last_err else OSError(f"Failed to copy {src} -> {dst}")
 
 
-# -----------------------------
 # Dataset preparation helpers
-# -----------------------------
 def prepare_from_labeled(
     labeled_dir: Path,
     train_dir: Path,
@@ -82,7 +79,7 @@ def prepare_from_labeled(
             f"No images found in {img_dir}. Expecting labeled dataset with images/ and labels/."
         )
 
-    # Shuffle before splitting (optionally seeded for reproducibility)
+    # Shuffle before splitting 
     if seed is not None:
         random.seed(seed)
     random.shuffle(imgs)
@@ -126,9 +123,7 @@ def write_data_yaml(
     return yaml_path
 
 
-# -----------------------------
-# Flower <-> YOLO param bridge
-# -----------------------------
+
 def ndarrays_to_state_dict(
     keys: List[str], nds: List[np.ndarray], ref_sd: Dict[str, torch.Tensor]
 ) -> Dict[str, torch.Tensor]:
@@ -146,9 +141,7 @@ def ndarrays_to_state_dict(
     return out
 
 
-# -----------------------------
 # Flower client
-# -----------------------------
 class YOLOFlowerClient(fl.client.NumPyClient):
     def __init__(
         self,
@@ -278,9 +271,7 @@ class YOLOFlowerClient(fl.client.NumPyClient):
         return 0.0, num_val, metrics
 
 
-# -----------------------------
 # CLI
-# -----------------------------
 def parse_args():
     ap = argparse.ArgumentParser()
     ap.add_argument("--server", default="localhost:8080", help="Flower server host:port")
