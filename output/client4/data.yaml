@@ -1,0 +1,6 @@
+path: ''
+train: C:/fed-learning7-belalandkaitlyn/output/client4/train/images
+val: C:/fed-learning7-belalandkaitlyn/output/client4/val/images
+nc: 1
+names:
+- object

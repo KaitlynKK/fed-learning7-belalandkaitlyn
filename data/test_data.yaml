@@ -1,0 +1,6 @@
+names:
+- object
+nc: 1
+path: ''
+train: []
+val: C:/fed-learning7-belalandkaitlyn/data/_auto_test_list.txt
